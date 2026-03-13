@@ -1,0 +1,180 @@
+<template>
+  <el-row class="container">
+    <!--头部-->
+    <my-topbar title class="topbar"></my-topbar>
+
+    <!--中间-->
+    <el-col :span="24" class="main">
+      <!--左侧导航-->
+      <aside :class="{ showSidebar: !collapsed }">
+        <!--展开折叠开关-->
+        <div class="menu-toggle" @click.prevent="collapse">
+          <i class="iconfont icon-menufold" v-show="!collapsed"></i>
+          <i class="iconfont icon-menuunfold" v-show="collapsed"></i>
+        </div>
+        <!--导航菜单-->
+        <el-menu
+          :default-active="$route.path"
+          router
+          :collapse="collapsed"
+          @select="handleSelect"
+        >
+          <template v-for="(item, index) in showMenus">
+            <el-submenu v-if="!item.leaf" :index="index + ''" :key="index">
+              <template slot="title">
+                <i :class="item.iconCls"></i>
+                <span slot="title">{{ item.name }}</span>
+              </template>
+              <el-menu-item
+                v-for="term in item.children"
+                :key="term.path"
+                :index="term.path"
+                :class="$route.path == term.path ? 'is-active' : ''"
+              >
+                <i :class="term.iconCls"></i>
+                <span slot="title">{{ term.name }}</span>
+              </el-menu-item>
+            </el-submenu>
+            <el-menu-item
+              v-else-if="item.leaf && item.children && item.children.length"
+              :index="item.children[0].path"
+              :class="$route.path == item.children[0].path ? 'is-active' : ''"
+              :key="item.children[0].path"
+            >
+              <i :class="item.iconCls"></i>
+              <span slot="title">{{ item.children[0].name }}</span>
+            </el-menu-item>
+          </template>
+        </el-menu>
+      </aside>
+
+      <!--右侧内容区-->
+      <section class="content-container">
+        <div class="grid-content bg-purple-light">
+          <el-col :span="24" class="content-wrapper">
+            <transition name="fade" mode="out-in">
+              <router-view class="middle-show"></router-view>
+            </transition>
+          </el-col>
+        </div>
+      </section>
+    </el-col>
+  </el-row>
+</template>
+
+<script>
+import myTopbar from '@/components/Layout/Topbar'
+
+export default {
+  components: { myTopbar },
+  data () {
+    return {
+      // defaultActiveIndex: this.$route.path.slice(1),
+      collapsed: false,
+      loading: false,
+      showMenus: this.$router.options.routes.filter(r => {
+        return r.menuShow
+      })
+    }
+  },
+  methods: {
+    handleSelect (index, keyPath) {
+      this.defaultActiveIndex = index
+    },
+    // 折叠导航栏
+    collapse: function () {
+      this.collapsed = !this.collapsed
+    }
+  }
+}
+</script>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+.container {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+
+  .topbar {
+    background: #4a8b87;
+    padding: 0px;
+  }
+  .main {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    top: 50px;
+    bottom: 0px;
+    overflow: hidden;
+  }
+
+  aside {
+    min-width: 50px;
+    background: #eef1f6;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.showSidebar {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .el-menu {
+      height: 100%; /*写给不支持calc()的浏览器*/
+      height: -moz-calc(100% - 80px);
+      height: -webkit-calc(100% - 80px);
+      height: calc(100% - 80px);
+      border-radius: 0px;
+      border-right: 0px;
+      background-color: #eef1f6;
+    }
+
+    .el-submenu .el-menu-item {
+      min-width: 60px;
+    }
+    .el-menu {
+      width: 180px;
+    }
+    .el-menu--collapse {
+      width: 60px;
+    }
+
+    .el-menu .el-menu-item,
+    .el-submenu .el-submenu__title {
+      height: 46px;
+      line-height: 46px;
+    }
+
+    .el-menu-item:hover,
+    .el-submenu .el-menu-item:hover,
+    .el-submenu__title:hover {
+      background-color: #d7d9dc;
+    }
+  }
+
+  .menu-toggle {
+    background: #d7d9dc;
+    text-align: center;
+    height: 26px;
+    line-height: 30px;
+  }
+
+  .content-container {
+    background: #fff;
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    padding-bottom: 1px;
+
+    .content-wrapper {
+      background-color: #fff;
+      box-sizing: border-box;
+      padding: 10 px;
+    }
+  }
+}
+</style>

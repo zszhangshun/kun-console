@@ -1,0 +1,282 @@
+
+.main {
+  margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+.header {
+  width: 100%;
+  height: 594px;
+  position: relative;
+  background: linear-gradient(177deg,
+      rgba(21, 116, 122, 1) 0%,
+      rgba(242, 211, 178, 1) 100%);
+  text-align: center;
+
+  .nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .top {
+    margin: 0 auto;
+    width: 1200px;
+    height: 56px;
+
+    // box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 0.15);
+    .tabsleft {
+      float: left;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-right: 31px;
+        list-style: none;
+        float: left;
+        width: 56px;
+        height: 54px;
+        line-height: 56px;
+
+        // line-height:116px;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+
+        a {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          font-size: 14px;
+          font-family: PingFangSC-Semibold;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+
+      .logo {
+        width: 74px;
+        // background-image: '/assets/img/logo.png';
+        background: url(../assets/img/logo.png) no-repeat center center;
+        background-size: 100%;
+      }
+
+      .active {
+        border-bottom: 2px solid rgba(254, 254, 254, 1);
+      }
+    }
+
+    .portright {
+      float: right;
+
+      span {
+        padding: 0 16px;
+        font-size: 14px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        display: inline-block;
+        height: 32px;
+        line-height: 32px;
+        margin-top: 12px;
+        cursor: pointer;
+      }
+
+      .btn-console {
+        // line-height: 56px;
+        background: rgba(255, 255, 255, 1);
+        border: 1px solid rgba(242, 243, 250, 1);
+        box-shadow: 0px 4px 8px 0px rgba(10, 22, 51, 0.1);
+        border-radius: 4px;
+        color: rgba(48, 46, 46, 1);
+      }
+
+      .btn-help {
+        margin-left: 16px;
+        height: 34px;
+        border: 1px solid rgba(242, 243, 250, 1);
+        border-radius: 4px;
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+
+    .active {}
+  }
+
+  .banner {
+    position: absolute;
+    top: 213px;
+    width: 100%;
+
+    .content {
+      margin: 0 auto;
+      max-width: 1631px;
+      // width: 80%;
+      min-width: 1200px;
+      height: 487px;
+      background: url(../assets/img/banner.png) no-repeat 0 0;
+      background-size: cover;
+      // img {
+      //   width: 1631px;
+      //   height: 487px;
+      // }
+    }
+
+    .banner-text {
+      margin: 0 auto;
+      width: 1200px;
+    }
+
+    .desc {
+      margin-top: 20px;
+      text-align: left;
+      width: 400px;
+      height: 400px;
+      float: right;
+
+      .theme {
+        width: 86px;
+        height: 87px;
+        line-height: 87px;
+        font-size: 87px;
+        color: rgba(255, 253, 253, 1);
+        // line-height: 751px;
+      }
+
+      .sketch {
+        font-size: 18px;
+        font-weight: bold;
+        color: rgba(255, 253, 253, 1);
+        margin: 10px 0;
+      }
+
+      .detail {
+        width: 420px;
+        height: 63px;
+        font-size: 14px;
+        font-weight: 300;
+        color: rgba(255, 253, 253, 1);
+      }
+    }
+  }
+}
+
+.section {
+  // width: 100%;
+  padding-top: 100px;
+  // height: 1600px;
+  background: url(../assets/img/bg.jpg) repeat 0 0;
+  // background-size: 100%;
+
+  .project {
+    margin: 0 auto;
+    width: 1200px;
+    height: 520px;
+    // padding: 0 60px;
+    border-bottom: 1px solid rgba(133, 97, 77, 0.25);
+
+    .prj-desc {
+      margin-top: 110px;
+      text-align: left;
+      // margin-left: 60px;
+      width: 480px;
+      float: left;
+
+      .logo {
+        height: 54px;
+        width: 54px;
+        border-radius: 50%;
+        // background: url(../assets/img/icon_3.png) no-repeat center center;
+        // background-size: 25% 25%;
+      }
+
+      .logo-console {
+        background: url(../assets/img/icon_3.png) no-repeat center center;
+        background-size: contain;
+      }
+
+      .logo-repository {
+        background: url(../assets/img/icon_1.png) no-repeat center center;
+        background-size: contain;
+      }
+
+      .logo-deploy {
+        background: url(../assets/img/icon_2.png) no-repeat center center;
+        background-size: contain;
+      }
+
+      .title {
+        margin: 31px 0 17px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 32px;
+        font-weight: bold;
+        color: rgba(45, 44, 44, 1);
+      }
+
+      .alias {
+        height: 14px;
+        line-height: 14px;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(146, 93, 96, 1);
+      }
+
+      .detail {
+        margin: 30px 0;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(45, 44, 44, 1);
+      }
+
+      .port {
+        width: 88px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        text-align: center;
+        font-size: 14px;
+        line-height: 34px;
+        height: 34px;
+        background: rgba(42, 42, 42, 1);
+        border-radius: 17px;
+        cursor: pointer;
+      }
+    }
+
+    .prj-show {
+      float: right;
+    }
+
+    .prj-console {
+      margin-top: 40px;
+      width: 404px;
+      height: 425px;
+      background: url(../assets/img/pic_1.png) no-repeat center center;
+      background-size: cover;
+    }
+
+    .prj-repository {
+      margin-top: 98px;
+      width: 569px;
+      height: 325px;
+      background: url(../assets/img/pic_2.png) no-repeat center center;
+      background-size: cover;
+    }
+
+    .prj-deploy {
+      margin-top: 130px;
+      width: 641px;
+      height: 266px;
+      background: url(../assets/img/pic_3.png) no-repeat center center;
+      background-size: cover;
+    }
+  }
+}
+
+.footer {
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(146, 93, 96, 1);
+  background: rgba(27, 27, 27, 1);
+}
